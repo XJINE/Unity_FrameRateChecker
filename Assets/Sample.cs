@@ -14,10 +14,10 @@ public class Sample : MonoBehaviour
     {
         GUILayout.BeginArea(new Rect(50, 50, 300, 300));
         GUILayout.Label("Press [R] key to reset all.");
-        GUILayout.Label("FPS : " + FrameRateChecker.Instance.Fps);
-        GUILayout.Label("AVG : " + FrameRateChecker.Instance.FpsAvg);
-        GUILayout.Label("MIN : " + FrameRateChecker.Instance.FpsMin);
-        GUILayout.Label("MAX : " + FrameRateChecker.Instance.FpsMax);
+        GUILayout.Label("Now : " + FrameRateChecker.Instance.Fps);
+        GUILayout.Label("Avg : " + FrameRateChecker.Instance.FpsAvg);
+        GUILayout.Label("Min : " + FrameRateChecker.Instance.FpsMin);
+        GUILayout.Label("Max : " + FrameRateChecker.Instance.FpsMax);
         GUILayout.EndArea();
     }
 }

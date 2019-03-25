@@ -26,34 +26,16 @@ public class FrameRateChecker : SingletonMonoBehaviour<FrameRateChecker>
     [SerializeField, DisableInInspector]
     private float fpsMax;
 
+    private bool isInitialized;
+
     #endregion Field
 
     #region Property
 
-    public bool IsInitialized 
-    {
-        protected set; get;
-    }
-
-    public float Fps
-    {
-        get { return this.fps; }
-    }
-
-    public float FpsAvg
-    {
-        get { return this.fpsAvg; }
-    }
-
-    public float FpsMin
-    {
-        get { return this.fpsMin; }
-    }
-
-    public float FpsMax
-    {
-        get { return this.fpsMax; }
-    }
+    public float Fps    { get { return this.fps;    } }
+    public float FpsAvg { get { return this.fpsAvg; } }
+    public float FpsMin { get { return this.fpsMin; } }
+    public float FpsMax { get { return this.fpsMax; } }
 
     #endregion Property
 
@@ -74,23 +56,15 @@ public class FrameRateChecker : SingletonMonoBehaviour<FrameRateChecker>
             this.frameCount  = 0;
             this.elapsedTime = 0;
 
-            if (this.IsInitialized)
+            if (this.isInitialized)
             {
                 this.fpsAvg = (this.fpsAvg + this.fps) / 2;
-
-                if (this.fps < this.fpsMin)
-                {
-                    this.fpsMin = this.fps;
-                }
-
-                if (this.fpsMax < this.fps)
-                {
-                    this.fpsMax = this.fps;
-                }
+                this.fpsMin = Mathf.Min(this.fpsMin, this.fps);
+                this.fpsMax = Mathf.Max(this.FpsMax, this.fps);
             }
             else
             {
-                this.IsInitialized = true;
+                this.isInitialized = true;
 
                 this.fpsAvg = this.fps;
                 this.fpsMin = this.fps;
@@ -104,7 +78,7 @@ public class FrameRateChecker : SingletonMonoBehaviour<FrameRateChecker>
         this.frameCount  = 0;
         this.elapsedTime = 0;
 
-        this.IsInitialized = false;
+        this.isInitialized = false;
 
         this.fps    = 0;
         this.fpsAvg = 0;
