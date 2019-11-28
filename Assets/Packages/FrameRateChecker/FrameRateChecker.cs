@@ -60,7 +60,7 @@ public class FrameRateChecker : SingletonMonoBehaviour<FrameRateChecker>
             {
                 this.fpsAvg = (this.fpsAvg + this.fps) / 2;
                 this.fpsMin = Mathf.Min(this.fpsMin, this.fps);
-                this.fpsMax = Mathf.Max(this.FpsMax, this.fps);
+                this.fpsMax = Mathf.Max(this.fpsMax, this.fps);
             }
             else
             {
